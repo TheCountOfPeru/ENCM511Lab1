@@ -10,5 +10,6 @@
 
 void WaitABit(unsigned long int milliSecs);
 unsigned long int TimeStamp(void);
+unsigned long int TaskExecutionTimePasses(unsigned short int taskTime);
 
 #endif /* PROJECTUTILITIES_H_ */
