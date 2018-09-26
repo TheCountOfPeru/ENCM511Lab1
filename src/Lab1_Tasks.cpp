@@ -32,4 +32,8 @@ void LAB1_Task_FLASH_REB_LED2(void)
 	printf("In LAB1_Task_FLASH_REB_LED2\n");
 	Adjust_REB_LED(2);
 }
+void LAB1_Task_REB_SWITCH_PROBLEM()
+{
+
+}
 

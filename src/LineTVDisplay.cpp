@@ -33,4 +33,8 @@ void Lab0_Task1LineTV()
 {
 	TimeStamp();
 	printf("%5d: In Lab0_Task1LineTV()\n");
+	TVLINE_8BITVALUE nextLine = 0;
+	nextLine = GetNext1LineTV_Value();
+	Display1LineTV_Value_Software(nextLine);
+	Display1LineTV_Value_Hardware(nextLine);
 }

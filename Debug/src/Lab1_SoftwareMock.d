@@ -30,3 +30,4 @@ src/Lab1_SoftwareMock.doj: ../system/adi_initialize.h
 src/Lab1_SoftwareMock.doj: ../src/Lab1_SoftwareMock.h
 src/Lab1_SoftwareMock.doj: ../src/LineTVDisplay.h
 src/Lab1_SoftwareMock.doj: ../src/ProjectUtilities.h
+src/Lab1_SoftwareMock.doj: ../src/Lab1_prototypes.h

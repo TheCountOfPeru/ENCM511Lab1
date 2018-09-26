@@ -8,11 +8,17 @@
 #include "Lab1_SoftwareMock.h"
 #include "LineTVDisplay.h"
 #include "ProjectUtilities.h"
+#include "Lab1_prototypes.h"
 
 /** 
  * If you want to use command program arguments, then place them in the following string. 
  */
 char __argv_string[] = "";
+
+#define DO_LAB0_TASK true;
+#define DO_LAB1_Task_FLASH_REB_LED3 false;
+#define DO_LAB1_Task_FLASH_REB_LED2 false;
+#define DO_LAB1_Task_REB_SWITCH_PROBLEM false;
 
 int main(int argc, char *argv[])
 {
@@ -28,15 +34,18 @@ int main(int argc, char *argv[])
 
 		bool notQuit = true;
 
-		TVLINE_8BITVALUE nextLine = 0;
+		//TVLINE_8BITVALUE nextLine = 0;
 		unsigned long int softwareCounter = 0;
 		bool softwareCounterError = false;
 		while(softwareCounterError == false & notQuit){
-			nextLine = GetNext1LineTV_Value();
-			Display1LineTV_Value_Software(nextLine);
-			Display1LineTV_Value_Hardware(nextLine);
+			Lab0_Task1LineTV();
+
+//			LAB1_Task_FLASH_REB_LED3();
+//			LAB1_Task_FLASH_REB_LED2();
+//			LAB1_Task_REB_SWITCH_PROBLEM();
+
 			softwareCounter++;
-			if(softwareCounter>=6)
+			if(softwareCounter>5)
 				softwareCounterError=true;
 			WaitABit(30);
 		}

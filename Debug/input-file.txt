@@ -1,4 +1,5 @@
 "src/Lab1_SoftwareMock.doj"
+"src/Lab1_Tasks.doj"
 "src/LineTVDisplay.doj"
 "src/ProjectUtilities.doj"
 "system/adi_initialize.doj"
