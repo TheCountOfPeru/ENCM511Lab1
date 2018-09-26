@@ -38,15 +38,25 @@ bool DO_Lab0_Task_1LineTV(void) {return false;}
 bool DO_LAB1_Task_FLASH_REB_LED3(void) {
 	static unsigned int nextTimeToRun = DELAY_LAB1_Task_FLASH_REB_LED3;
 	if(TimeStamp() < nextTimeToRun){
-		printf("NO DO_LAB1_Task_FLASH_REB_LED3\n");
+		//printf("NO DO_LAB1_Task_FLASH_REB_LED3\n");
 		return false;
 	}else{
-		printf("RUN DO_LAB1_Task_FLASH_REB_LED3\n");
+		//printf("RUN DO_LAB1_Task_FLASH_REB_LED3\n");
 		nextTimeToRun = nextTimeToRun + PERIOD_LAB1_Task_FLASH_REB_LED3;
 		return true;
 	}
 }
-bool DO_LAB1_Task_FLASH_REB_LED2(void) {return true;}
+bool DO_LAB1_Task_FLASH_REB_LED2(void) {
+	static unsigned int nextTimeToRun = DELAY_LAB1_Task_FLASH_REB_LED2;
+if(TimeStamp() < nextTimeToRun){
+	//printf("NO DO_LAB1_Task_FLASH_REB_LED3\n");
+	return false;
+}else{
+	//printf("RUN DO_LAB1_Task_FLASH_REB_LED3\n");
+	nextTimeToRun = nextTimeToRun + PERIOD_LAB1_Task_FLASH_REB_LED2;
+	return true;
+}
+}
 bool DO_LAB1_Task_REB_SWITCH_PROBLEM(void) {return false;}
 
 int main(int argc, char *argv[])
@@ -77,6 +87,8 @@ int main(int argc, char *argv[])
 
 				if(DO_LAB1_Task_REB_SWITCH_PROBLEM())
 					LAB1_Task_REB_SWITCH_PROBLEM();
+
+				//Lab2_Tasks();
 
 				Display_Current_REB_LED_BITS();
 			softwareCounter++;

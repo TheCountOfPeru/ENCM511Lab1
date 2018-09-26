@@ -22,13 +22,7 @@ static void Adjust_REB_LED(unsigned int whichLED)
 	TaskExecutionTimePasses(TIME_Adjust_REB_LED);
 }
 
-void LAB1_Task_FLASH_REB_LED3(void)
-{
-	TimeStamp();
-	printf("In LAB1_Task_FLASH_REB_LED3\n");
-	Adjust_REB_LED(3);
-	//WaitABit(250);
-}
+
 
 void ShowValueAsBinary(unsigned short int value)
 {
@@ -49,7 +43,13 @@ void Display_Current_REB_LED_BITS(void)
 	printf(" Current REB LED ");
 	ShowValueAsBinary(current_REB_LED); printf("\n");
 }
-
+void LAB1_Task_FLASH_REB_LED3(void)
+{
+	TimeStamp();
+	printf("In LAB1_Task_FLASH_REB_LED3\n");
+	Adjust_REB_LED(3);
+	//WaitABit(250);
+}
 void LAB1_Task_FLASH_REB_LED2(void)
 {
 	TimeStamp();

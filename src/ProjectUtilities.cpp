@@ -11,12 +11,15 @@ static unsigned long int timeNowMillisecs = 0;
 void WaitABit(unsigned long int milliSecs)
 {
 	timeNowMillisecs = timeNowMillisecs + milliSecs;
-	printf("Waited timeNowMillisecs %d\n", timeNowMillisecs);
+	printf("***WAITED timeNowMillisecs %d\n", timeNowMillisecs);
 }
 
 void WaitUntilTimeEquals(unsigned long int milliSecs)
 {
-	WaitABit(milliSecs);
+
+	//WaitABit();
+	printf("***WAITED %d - timeNowMillisecs %d\n", milliSecs, timeNowMillisecs);
+	timeNowMillisecs = milliSecs;
 }
 
 unsigned long int TimeNow()

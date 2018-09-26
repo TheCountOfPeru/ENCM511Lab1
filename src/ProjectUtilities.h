@@ -9,6 +9,8 @@
 #define PROJECTUTILITIES_H_
 
 void WaitABit(unsigned long int milliSecs);
+void WaitUntilTimeEquals(unsigned long int milliSecs);
+unsigned long int TimeNow(void);
 unsigned long int TimeStamp(void);
 unsigned long int TaskExecutionTimePasses(unsigned short int taskTime);
 
