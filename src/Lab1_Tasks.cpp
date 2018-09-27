@@ -12,17 +12,34 @@
 //#define PERIOD_LAB1_Task_FLASH_REB_LED3 250
 //#define PERIOD_LAB1_Task_FLASH_REB_LED2 500
 //#define PERIOD_LAB1_Task_FLASH_REB_SWITCH_PROBLEM 100
+#define LED0_BITPATTERN 0x0001
+#define LED1_BITPATTERN 0x0002
+#define LED2_BITPATTERN 0x0004
+#define LED3_BITPATTERN 0x0008
+typedef unsigned short int LED_BITS;
+static LED_BITS current_REB_LED = 0; //16 bit LED assumed
 
-static unsigned short int current_REB_LED = 0; //16 bit LED assumed
-
-static void Adjust_REB_LED(unsigned int whichLED)
+void Initialize_REB_LED(void)
 {
-	current_REB_LED = whichLED;
-	printf("In Adjust_REB_LED 0X%2x\n", whichLED);
+	LED_BITS bitmask = 0x01;
+	for(int count =0;count<16;count++)
+	{
+		Adjust_REB_LED(bitmask, 0);
+		bitmask = bitmask << 1;
+	}
+	Reset_Master_Clock();
+}
+static void Adjust_REB_LED(LED_BITS whichLED, int LED_State)
+{
+	if(LED_State == 1)//Turn on
+		current_REB_LED = current_REB_LED | whichLED;
+	else if(LED_State == 0)//Turn off
+		current_REB_LED = current_REB_LED & whichLED;
+	//current_REB_LED = current_REB_LED | whichLED; slide 25
+	//current_REB_LED = whichLED;
+	printf("In Adjust_REB_LED 0x%2x\n", current_REB_LED);
 	TaskExecutionTimePasses(TIME_Adjust_REB_LED);
 }
-
-
 
 void ShowValueAsBinary(unsigned short int value)
 {
@@ -47,14 +64,28 @@ void LAB1_Task_FLASH_REB_LED3(void)
 {
 	TimeStamp();
 	printf("In LAB1_Task_FLASH_REB_LED3\n");
-	Adjust_REB_LED(3);
+	//Adjust_REB_LED(3);
+	static unsigned short int LED3_State = 0;
+	static unsigned short int next_LED3State = 0;
+	switch(LED3_State){
+		case 0://if OFF turn ON
+			Adjust_REB_LED(LED3_BITPATTERN, 1);
+			next_LED3State = 1;
+			break;
+		case 1://if ON turn OFF
+			Adjust_REB_LED(LED3_BITPATTERN, 0);
+			next_LED3State = 0;
+			break;
+		default: printf("WRONG STATE\n");
+	}
+	LED3_State = next_LED3State;
 	//WaitABit(250);
 }
 void LAB1_Task_FLASH_REB_LED2(void)
 {
 	TimeStamp();
 	printf("In LAB1_Task_FLASH_REB_LED2\n");
-	Adjust_REB_LED(2);
+	Adjust_REB_LED(LED2_BITPATTERN, 1);
 	//WaitABit(500);
 }
 void LAB1_Task_REB_SWITCH_PROBLEM(void)

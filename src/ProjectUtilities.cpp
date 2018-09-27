@@ -16,10 +16,10 @@ void WaitABit(unsigned long int milliSecs)
 
 void WaitUntilTimeEquals(unsigned long int milliSecs)
 {
+	printf("***WAITED %d",milliSecs);
+	timeNowMillisecs = milliSecs;//not sure about this  part its not correct
+	printf(" - timeNowMillisecs %d\n", milliSecs, timeNowMillisecs);
 
-	//WaitABit();
-	printf("***WAITED %d - timeNowMillisecs %d\n", milliSecs, timeNowMillisecs);
-	timeNowMillisecs = milliSecs;
 }
 
 unsigned long int TimeNow()
@@ -29,13 +29,21 @@ unsigned long int TimeNow()
 
 unsigned long int TimeStamp(void)
 {
-	printf("TS%4d:",timeNowMillisecs);
+	printf("TS%4d:", timeNowMillisecs);
 	return timeNowMillisecs;
 }
 
+unsigned long int TimeStampBlank(void)
+{
+	//printf("TS%4d:", timeNowMillisecs);
+	return timeNowMillisecs;
+}
 unsigned long int TaskExecutionTimePasses(unsigned short int taskTime)
 {
 	timeNowMillisecs = timeNowMillisecs + taskTime;
 	return timeNowMillisecs;
 }
-
+void Reset_Master_Clock(void)
+{
+	timeNowMillisecs = 0;
+}

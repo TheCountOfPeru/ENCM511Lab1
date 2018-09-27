@@ -37,7 +37,7 @@ char __argv_string[] = "";
 bool DO_Lab0_Task_1LineTV(void) {return false;}
 bool DO_LAB1_Task_FLASH_REB_LED3(void) {
 	static unsigned int nextTimeToRun = DELAY_LAB1_Task_FLASH_REB_LED3;
-	if(TimeStamp() < nextTimeToRun){
+	if(TimeStampBlank() < nextTimeToRun){
 		//printf("NO DO_LAB1_Task_FLASH_REB_LED3\n");
 		return false;
 	}else{
@@ -47,15 +47,17 @@ bool DO_LAB1_Task_FLASH_REB_LED3(void) {
 	}
 }
 bool DO_LAB1_Task_FLASH_REB_LED2(void) {
+	/*
 	static unsigned int nextTimeToRun = DELAY_LAB1_Task_FLASH_REB_LED2;
-if(TimeStamp() < nextTimeToRun){
-	//printf("NO DO_LAB1_Task_FLASH_REB_LED3\n");
+if(TimeStampBlank() < nextTimeToRun){
+	//printf("NO DO_LAB1_Task_FLASH_REB_LED2\n");
 	return false;
 }else{
-	//printf("RUN DO_LAB1_Task_FLASH_REB_LED3\n");
+	//printf("RUN DO_LAB1_Task_FLASH_REB_LED2\n");
 	nextTimeToRun = nextTimeToRun + PERIOD_LAB1_Task_FLASH_REB_LED2;
 	return true;
-}
+}*/
+	return false;
 }
 bool DO_LAB1_Task_REB_SWITCH_PROBLEM(void) {return false;}
 
@@ -68,6 +70,7 @@ int main(int argc, char *argv[])
 	 */
 	adi_initComponents();
 	Initialize_1LineTVDisplay();
+	Initialize_REB_LED();
 		bool notQuit = true;
 		//TVLINE_8BITVALUE nextLine = 0;
 		unsigned long int softwareCounter = 0;
