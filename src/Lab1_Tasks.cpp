@@ -12,11 +12,17 @@
 //#define PERIOD_LAB1_Task_FLASH_REB_LED3 250
 //#define PERIOD_LAB1_Task_FLASH_REB_LED2 500
 //#define PERIOD_LAB1_Task_FLASH_REB_SWITCH_PROBLEM 100
-#define LED0_BITPATTERN 0x0001
-#define LED1_BITPATTERN 0x0002
-#define LED2_BITPATTERN 0x0004
-#define LED3_BITPATTERN 0x0008
-typedef unsigned short int LED_BITS;
+#define LED0_BITPATTERN 0x0001//unused
+#define LED1_BITPATTERN 0x0002//unused
+#define LED2_BITPATTERN 0x0002
+#define LED3_BITPATTERN 0x0004
+
+#define LED2_BITPATTERNOFF 0x0002
+#define LED3_BITPATTERNOFF 0x0004
+
+#define LED2_BITPATTERNON 0x0002
+#define LED3_BITPATTERNON 0x0004
+typedef unsigned short int LED_BITS;//0x0000
 static LED_BITS current_REB_LED = 0; //16 bit LED assumed
 
 void Initialize_REB_LED(void)
@@ -34,7 +40,7 @@ static void Adjust_REB_LED(LED_BITS whichLED, int LED_State)
 	if(LED_State == 1)//Turn on
 		current_REB_LED = current_REB_LED | whichLED;
 	else if(LED_State == 0)//Turn off
-		current_REB_LED = current_REB_LED & whichLED;
+		current_REB_LED = current_REB_LED & ~whichLED;
 	//current_REB_LED = current_REB_LED | whichLED; slide 25
 	//current_REB_LED = whichLED;
 	printf("In Adjust_REB_LED 0x%2x\n", current_REB_LED);

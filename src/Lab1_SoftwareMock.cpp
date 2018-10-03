@@ -57,7 +57,7 @@ if(TimeStampBlank() < nextTimeToRun){
 	nextTimeToRun = nextTimeToRun + PERIOD_LAB1_Task_FLASH_REB_LED2;
 	return true;
 }*/
-	return false;
+	return true;
 }
 bool DO_LAB1_Task_REB_SWITCH_PROBLEM(void) {return false;}
 
