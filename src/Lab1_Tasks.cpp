@@ -91,7 +91,22 @@ void LAB1_Task_FLASH_REB_LED2(void)
 {
 	TimeStamp();
 	printf("In LAB1_Task_FLASH_REB_LED2\n");
-	Adjust_REB_LED(LED2_BITPATTERN, 1);
+
+	static unsigned short int LED2_State = 0;
+	static unsigned short int next_LED2State = 0;
+	//Adjust_REB_LED(LED2_BITPATTERN, 1);
+	switch(LED2_State){
+			case 0://if OFF turn ON
+				Adjust_REB_LED(LED2_BITPATTERN, 1);
+				next_LED2State = 1;
+				break;
+			case 1://if ON turn OFF
+				Adjust_REB_LED(LED2_BITPATTERN, 0);
+				next_LED2State = 0;
+				break;
+			default: printf("WRONG STATE\n");
+		}
+		LED2_State = next_LED2State;
 	//WaitABit(500);
 }
 void LAB1_Task_REB_SWITCH_PROBLEM(void)
