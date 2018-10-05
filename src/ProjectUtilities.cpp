@@ -10,16 +10,15 @@ static unsigned long int timeNowMillisecs = 0;
 
 void WaitABit(unsigned long int milliSecs)
 {
+	printf("***WAITED %d", milliSecs);
 	timeNowMillisecs = timeNowMillisecs + milliSecs;
-	printf("***WAITED timeNowMillisecs %d\n", timeNowMillisecs);
+	printf(" - timeNowMillisecs %d\n", timeNowMillisecs);
 }
 
 void WaitUntilTimeEquals(unsigned long int milliSecs)
 {
-	printf("***WAITED %d",milliSecs);
-	timeNowMillisecs = milliSecs;//not sure about this  part its not correct
-	printf(" - timeNowMillisecs %d\n", milliSecs, timeNowMillisecs);
-
+	//milliSecs - timeNowMillisecs need to know how much time to wait after doing tasks
+	WaitABit(milliSecs - timeNowMillisecs);
 }
 
 unsigned long int TimeNow()
