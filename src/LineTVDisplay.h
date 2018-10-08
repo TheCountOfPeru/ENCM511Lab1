@@ -10,6 +10,7 @@
 	typedef unsigned char TVLINE_8BITVALUE;
 	#define GARBAGE_TV_Value 0xFF
 	void Initialize_1LineTVDisplay(void);
+	void DisplayBinary2(TVLINE_8BITVALUE nextline);
 	TVLINE_8BITVALUE GetNext1LineTV_Value();
 	void Display1LineTV_Value_Software(TVLINE_8BITVALUE nextline);
 	void Display1LineTV_Value_Hardware(TVLINE_8BITVALUE nextline);

@@ -20,7 +20,7 @@ char __argv_string[] = "";
 //#define DO_LAB1_Task_FLASH_REB_LED2 true
 //#define DO_LAB1_Task_REB_SWITCH_PROBLEM false
 
-#define MASTER_CLOCK_TICK_100 100
+#define MASTER_CLOCK_TICK_100 50
 
 #define PERIOD_Lab0_Task_1LineTV 50
 #define PERIOD_LAB1_Task_FLASH_REB_LED3 250
@@ -30,12 +30,24 @@ char __argv_string[] = "";
 //When should the task run the first time
 #define DELAY_Lab0_Task_1LineTV 0
 #define DELAY_LAB1_Task_FLASH_REB_LED3 0
-#define DELAY_LAB1_Task_FLASH_REB_LED2 0
+#define DELAY_LAB1_Task_FLASH_REB_LED2 1000
 #define DELAY_LAB1_Task_FLASH_REB_SWITCH_PROBLEM 0
 
 //Functions responsible for timing
-bool DO_Lab0_Task_1LineTV(void) {return false;}
+bool DO_Lab0_Task_1LineTV(void) {
+/*
+	static unsigned int nextTimeToRun = DELAY_Lab0_Task_1LineTV;
+		if(TimeStampBlank() < nextTimeToRun){
+			return false;
+		}else{
+			nextTimeToRun = nextTimeToRun + PERIOD_Lab0_Task_1LineTV;
+			return true;
+		}
+	*/
+	return false;
+}
 bool DO_LAB1_Task_FLASH_REB_LED3(void) {
+	/*
 	static unsigned int nextTimeToRun = DELAY_LAB1_Task_FLASH_REB_LED3;
 	if(TimeStampBlank() < nextTimeToRun){
 		//printf("NO DO_LAB1_Task_FLASH_REB_LED3\n");
@@ -45,19 +57,22 @@ bool DO_LAB1_Task_FLASH_REB_LED3(void) {
 		nextTimeToRun = nextTimeToRun + PERIOD_LAB1_Task_FLASH_REB_LED3;
 		return true;
 	}
+	*/
+	return false;
 }
 bool DO_LAB1_Task_FLASH_REB_LED2(void) {
-	/*
+/*
 	static unsigned int nextTimeToRun = DELAY_LAB1_Task_FLASH_REB_LED2;
-if(TimeStampBlank() < nextTimeToRun){
-	//printf("NO DO_LAB1_Task_FLASH_REB_LED2\n");
+	if(TimeStampBlank() < nextTimeToRun){
+		//printf("NO DO_LAB1_Task_FLASH_REB_LED2\n");
+		return false;
+	}else{
+		//printf("RUN DO_LAB1_Task_FLASH_REB_LED2\n");
+		nextTimeToRun = nextTimeToRun + PERIOD_LAB1_Task_FLASH_REB_LED2;
+		return true;
+	}
+	*/
 	return false;
-}else{
-	//printf("RUN DO_LAB1_Task_FLASH_REB_LED2\n");
-	nextTimeToRun = nextTimeToRun + PERIOD_LAB1_Task_FLASH_REB_LED2;
-	return true;
-}*/
-	return true;
 }
 bool DO_LAB1_Task_REB_SWITCH_PROBLEM(void) {return false;}
 
@@ -95,7 +110,7 @@ int main(int argc, char *argv[])
 
 				Display_Current_REB_LED_BITS();
 			softwareCounter++;
-			if(softwareCounter>5)
+			if(softwareCounter>6)
 			{
 				softwareCounterError=true;
 			}
