@@ -2,6 +2,8 @@
 "src/Lab1_Tasks.doj"
 "src/LineTVDisplay.doj"
 "src/ProjectUtilities.doj"
+"src/Read_FIO_FLAG_ASM.doj"
+"src/Read_FIO_FLAG_CPP.doj"
 "system/adi_initialize.doj"
 "system/startup_ldf/app_cplbtab.doj"
 "system/startup_ldf/app_handler_table.doj"
